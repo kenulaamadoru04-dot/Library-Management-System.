@@ -11,87 +11,16 @@ with open("members.json", "r") as file:
 
 member_ids = json_data
 
-books_details = [
-    {
-        "Name": "Game of Thrones",
-        "BookID": "BID0001",
-        "Author": "R R Martin",
-        "Availability": True,
+with open("books.json", "r") as file:
+    json_data = json.load(file)
 
-    },
-    {
-        "Name": "Harry Potter",
-        "BookID": "BID0002",
-        "Author": "J K Rowling",
-        "Availability": False
-    },
-    {
-        "Name": "The Hobbit",
-        "BookID": "BID0003",
-        "Author": "J R R Tolkien",
-        "Availability": True
-    },
-    {
-        "Name": "The Alchemist",
-        "BookID": "BID0004",
-        "Author": "Paulo Coelho",
-        "Availability": False
-    },
-    {
-        "Name": "Atomic Habits",
-        "BookID": "BID0005",
-        "Author": "James Clear",
-        "Availability": False
-    },
-    {
-        "Name": "Rich Dad Poor Dad",
-        "BookID": "BID0006",
-        "Author": "Robert Kiyosaki",
-        "Availability": True
-    },
-    {
-        "Name": "Sherlock Holmes",
-        "BookID": "BID0007",
-        "Author": "Arthur Conan Doyle",
-        "Availability": False
-    },
-    {
-        "Name": "Think and Grow Rich",
-        "BookID": "BID0008",
-        "Author": "Napoleon Hill",
-        "Availability": True
-    },
-    {
-        "Name": "The Great Gatsby",
-        "BookID": "BID0009",
-        "Author": "F Scott Fitzgerald",
-        "Availability": True
-    },
-    {
-        "Name": "1984",
-        "BookID": "BID0010",
-        "Author": "George Orwell",
-        "Availability": False
-    },
-    {
-        "Name": "The Catcher in the Rye",
-        "BookID": "BID0011",
-        "Author": "J D Salinger",
-        "Availability": True
-    },
-    {
-        "Name": "To Kill a Mockingbird",
-        "BookID": "BID0012",
-        "Author": "Harper Lee",
-        "Availability": False
-    }
-]
+books_details = json_data
 
-with open("books.json", "w") as file:
-    json.dump(books_details, file, indent=4)
 
-borrowed_list = [{'BookID': 'BID0001', 'MemberID': 'MID0001', 'BorrowedDate': '2026-05-07', 'DueDate': '2026-04-03'},
-                 {'BookID': 'BID0002', 'MemberID': 'MID003', 'BorrowedDate': '2026-05-01', 'DueDate': '2026-05-15'}]
+with open("borrowings.json", "r") as file:
+    json_data = json.load(file)
+
+borrowed_list = json_data
 
 # ------------- Checking the Member ID -------------
 
@@ -290,6 +219,8 @@ def remove_a_member(member_id):
     for member in member_ids:
         if member["Member_ID"] == member_id:
             member_ids.remove(member)
+            with open("members.json", "w") as file:
+                json.dump(member_ids, file, indent=4)
             break
 
     print("Member ID not found")
