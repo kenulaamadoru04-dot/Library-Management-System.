@@ -1,25 +1,15 @@
+import json
 from datetime import datetime, timedelta
 
 TODAY = datetime.today().date()
 VALID_DAYS = 14
 FINE_PER_DAY = 100
 
-member_ids = [
-    {"Name": "John", "Age": 25, "Joined_Date": "2024-07-01", "Member_ID": "MID0001", "Borrowed_Books": ["BID0001"]},
-    {"Name": "Diana", "Age": 21, "Joined_Date": "2024-09-03", "Member_ID": "MID0002", "Borrowed_Books": ["BID0002"]},
-    {"Name": "Peter", "Age": 22, "Joined_Date": "2024-08-11", "Member_ID": "MID0003", "Borrowed_Books": []},
-    {"Name": "Tony", "Age": 50, "Joined_Date": "2024-06-06", "Member_ID": "MID0004", "Borrowed_Books": []},
-    {"Name": "Emily", "Age": 24, "Joined_Date": "2024-10-15", "Member_ID": "MID0005", " Borrowed_Books": []},
-    {"Name": "Michael", "Age": 30, "Joined_Date": "2024-11-20", "Member_ID": "MID0006", "Borrowed_Books": []},
-    {"Name": "Sophia", "Age": 19, "Joined_Date": "2024-12-01", "Member_ID": "MID0007",  "Borrowed_Books": []},
-    {"Name": "Daniel", "Age": 27, "Joined_Date": "2024-07-18", "Member_ID": "MID0008", "borrowed_Books": []},
-    {"Name": "Olivia", "Age": 23, "Joined_Date": "2024-08-25", "Member_ID": "MID0009", "Borrowed_Books": []},
-    {"Name": "Chris", "Age": 35, "Joined_Date": "2024-09-14", "Member_ID": "MID0010", "Borrowed_Books": []},
-    {"Name": "Natalie", "Age": 28, "Joined_Date": "2024-10-30", "Member_ID": "MID0011", "Borrowed_Books": []},
-    {"Name": "Kevin", "Age": 26, "Joined_Date": "2024-11-08", "Member_ID": "MID0012", "Borrowed_Books": []},
-    {"Name": "Grace", "Age": 20, "Joined_Date": "2024-12-12", "Member_ID": "MID0013", "Borrowed_Books": []},
-    {"Name": "Ethan", "Age": 31, "Joined_Date": "2025-01-05", "Member_ID": "MID0014", "Borrowed_Books": []},
-]
+
+with open("members.json", "r") as file:
+    json_data = json.load(file)
+
+member_ids = json_data
 
 books_details = [
     {
@@ -97,6 +87,9 @@ books_details = [
     }
 ]
 
+with open("books.json", "w") as file:
+    json.dump(books_details, file, indent=4)
+
 borrowed_list = [{'BookID': 'BID0001', 'MemberID': 'MID0001', 'BorrowedDate': '2026-05-07', 'DueDate': '2026-04-03'},
                  {'BookID': 'BID0002', 'MemberID': 'MID003', 'BorrowedDate': '2026-05-01', 'DueDate': '2026-05-15'}]
 
@@ -144,8 +137,9 @@ def add_member():
     }
     member_ids.append(new_member)
     print(new_member)
+    with open("members.json", "w") as file:
+        json.dump(member_ids, file, indent=4)
     return new_id
-
 
 # ------------------ Borrowing a Book ----------------
 
@@ -155,7 +149,7 @@ def borrowing_book(book_id, mem_id):
         if book["BookID"] == book_id:
 
             if not book["Availability"]:
-                print("Book is already borrowed")
+                print("Book is not available now")
                 break
 
             details = {
@@ -260,6 +254,8 @@ def menu():
             4.Add Member
             5.Show All the members
             6.Show All Borrowed Details
+            7.Remove a Member
+            8.Remove a Book
             0.Exit
 ======================================
 """)
@@ -281,13 +277,41 @@ def show_books(book_list):
 def show_members(members_list):
 
     print("\n")
-    print(f"{'ID':<8} {'Name':<15} {'Age':<6} {'Joined Date':<20}")
+    print(f"{'ID':<8} {'Name':<15} {'Age':<6} {'Joined Date':<20} {'Number of Books Borrowed':<20}")
 
     for member in members_list:
 
-        print(f"{member['Member_ID']:<8} {member['Name']:<15} {member['Age']:<6} {member['Joined_Date']:<20}")
+        print(f"{member['Member_ID']:<8} {member['Name']:<15} {member['Age']:<6} {member['Joined_Date']:<20} {f'{len(member['Borrowed_Books'])}/2':>10}")
 
     print("\n")
+
+# ---------------Remove members ---------------
+def remove_a_member(member_id):
+    for member in member_ids:
+        if member["Member_ID"] == member_id:
+            member_ids.remove(member)
+            break
+
+    print("Member ID not found")
+
+# ------------- Remove a Book ---------------
+
+def remove_a_book(book_id):
+    for book in books_details:
+        if book["BookID"] == book_id:
+            books_details.remove(book)
+            break
+
+    print("Book ID not found")
+
+# ------------- Limit to Two Books ----------
+def limit(member_id):
+    for member in member_ids:
+        if member["Member_ID"] == member_id:
+            if len(member["Borrowed_Books"]) == 2:
+                print("You already borrowed two books.")
+                return False
+    return True
 
 # -------------Main Programme ----------------
 
@@ -303,7 +327,7 @@ while library_process:
 
     elif user_option == "2":
         user_id = name_validation()
-        if user_id:
+        if user_id and limit(user_id):
             book_id = input("Enter Book ID: ")
             borrowing_book(book_id, user_id)
         else:
@@ -319,6 +343,12 @@ while library_process:
         show_members(member_ids)
     elif user_option == "6":
         show_borrowings(borrowed_list)
+    elif user_option == "7":
+        user_id = name_validation()
+        remove_a_member(user_id)
+    elif user_option == "8":
+        book_id = input("Enter Book ID: ")
+        remove_a_book(book_id)
     elif user_option == "0":
         break
     else:

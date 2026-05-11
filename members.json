@@ -1,0 +1,105 @@
+[
+    {
+        "Name": "John",
+        "Age": 25,
+        "Joined_Date": "2024-07-01",
+        "Member_ID": "MID0001",
+        "Borrowed_Books": [
+            "BID0001",
+            "BID0003"
+        ]
+    },
+    {
+        "Name": "Diana",
+        "Age": 21,
+        "Joined_Date": "2024-09-03",
+        "Member_ID": "MID0002",
+        "Borrowed_Books": [
+            "BID0002"
+        ]
+    },
+    {
+        "Name": "Peter",
+        "Age": 22,
+        "Joined_Date": "2024-08-11",
+        "Member_ID": "MID0003",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Tony",
+        "Age": 50,
+        "Joined_Date": "2024-06-06",
+        "Member_ID": "MID0004",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Emily",
+        "Age": 24,
+        "Joined_Date": "2024-10-15",
+        "Member_ID": "MID0005",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Michael",
+        "Age": 30,
+        "Joined_Date": "2024-11-20",
+        "Member_ID": "MID0006",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Sophia",
+        "Age": 19,
+        "Joined_Date": "2024-12-01",
+        "Member_ID": "MID0007",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Daniel",
+        "Age": 27,
+        "Joined_Date": "2024-07-18",
+        "Member_ID": "MID0008",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Olivia",
+        "Age": 23,
+        "Joined_Date": "2024-08-25",
+        "Member_ID": "MID0009",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Chris",
+        "Age": 35,
+        "Joined_Date": "2024-09-14",
+        "Member_ID": "MID0010",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Natalie",
+        "Age": 28,
+        "Joined_Date": "2024-10-30",
+        "Member_ID": "MID0011",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Kevin",
+        "Age": 26,
+        "Joined_Date": "2024-11-08",
+        "Member_ID": "MID0012",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Grace",
+        "Age": 20,
+        "Joined_Date": "2024-12-12",
+        "Member_ID": "MID0013",
+        "Borrowed_Books": []
+    },
+    {
+        "Name": "Ethan",
+        "Age": 31,
+        "Joined_Date": "2025-01-05",
+        "Member_ID": "MID0014",
+        "Borrowed_Books": []
+    }
+]

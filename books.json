@@ -1,0 +1,74 @@
+[
+    {
+        "Name": "Game of Thrones",
+        "BookID": "BID0001",
+        "Author": "R R Martin",
+        "Availability": true
+    },
+    {
+        "Name": "Harry Potter",
+        "BookID": "BID0002",
+        "Author": "J K Rowling",
+        "Availability": false
+    },
+    {
+        "Name": "The Hobbit",
+        "BookID": "BID0003",
+        "Author": "J R R Tolkien",
+        "Availability": true
+    },
+    {
+        "Name": "The Alchemist",
+        "BookID": "BID0004",
+        "Author": "Paulo Coelho",
+        "Availability": false
+    },
+    {
+        "Name": "Atomic Habits",
+        "BookID": "BID0005",
+        "Author": "James Clear",
+        "Availability": false
+    },
+    {
+        "Name": "Rich Dad Poor Dad",
+        "BookID": "BID0006",
+        "Author": "Robert Kiyosaki",
+        "Availability": true
+    },
+    {
+        "Name": "Sherlock Holmes",
+        "BookID": "BID0007",
+        "Author": "Arthur Conan Doyle",
+        "Availability": false
+    },
+    {
+        "Name": "Think and Grow Rich",
+        "BookID": "BID0008",
+        "Author": "Napoleon Hill",
+        "Availability": true
+    },
+    {
+        "Name": "The Great Gatsby",
+        "BookID": "BID0009",
+        "Author": "F Scott Fitzgerald",
+        "Availability": true
+    },
+    {
+        "Name": "1984",
+        "BookID": "BID0010",
+        "Author": "George Orwell",
+        "Availability": false
+    },
+    {
+        "Name": "The Catcher in the Rye",
+        "BookID": "BID0011",
+        "Author": "J D Salinger",
+        "Availability": true
+    },
+    {
+        "Name": "To Kill a Mockingbird",
+        "BookID": "BID0012",
+        "Author": "Harper Lee",
+        "Availability": false
+    }
+]
