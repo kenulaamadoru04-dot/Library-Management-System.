@@ -1,0 +1,14 @@
+[
+    {
+        "BookID": "BID0001",
+        "MemberID": "MID0001",
+        "BorrowedDate": "2026-05-07",
+        "DueDate": "2026-04-03"
+    },
+    {
+        "BookID": "BID0002",
+        "MemberID": "MID003",
+        "BorrowedDate": "2026-05-01",
+        "DueDate": "2026-05-15"
+    }
+]
