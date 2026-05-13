@@ -21,13 +21,13 @@
         "Name": "The Alchemist",
         "BookID": "BID0004",
         "Author": "Paulo Coelho",
-        "Availability": false
+        "Availability": true
     },
     {
         "Name": "Atomic Habits",
         "BookID": "BID0005",
         "Author": "James Clear",
-        "Availability": false
+        "Availability": true
     },
     {
         "Name": "Rich Dad Poor Dad",
@@ -39,7 +39,7 @@
         "Name": "Sherlock Holmes",
         "BookID": "BID0007",
         "Author": "Arthur Conan Doyle",
-        "Availability": false
+        "Availability": true
     },
     {
         "Name": "Think and Grow Rich",
@@ -57,7 +57,7 @@
         "Name": "1984",
         "BookID": "BID0010",
         "Author": "George Orwell",
-        "Availability": false
+        "Availability": true
     },
     {
         "Name": "The Catcher in the Rye",
@@ -69,6 +69,6 @@
         "Name": "To Kill a Mockingbird",
         "BookID": "BID0012",
         "Author": "Harper Lee",
-        "Availability": false
+        "Availability": true
     }
 ]

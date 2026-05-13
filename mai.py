@@ -7,14 +7,14 @@ FINE_PER_DAY = 100
 
 
 with open("members.json", "r") as file:
-    json_data = json.load(file)
+    json_members_data = json.load(file)
 
-member_ids = json_data
+member_ids = json_members_data
 
 with open("books.json", "r") as file:
-    json_data = json.load(file)
+    json_books_data = json.load(file)
 
-books_details = json_data
+books_details = json_books_data
 
 
 with open("borrowings.json", "r") as file:
@@ -65,7 +65,12 @@ def add_member():
         "Borrowed_Books": []
     }
     member_ids.append(new_member)
-    print(new_member)
+    print(f"""
+Name: {new_member["Name"]}
+Age: {new_member["Age"]}
+Joined date: {new_member["Joined_Date"]}
+Member ID: {new_member["Member_ID"]}
+    """)
     with open("members.json", "w") as file:
         json.dump(member_ids, file, indent=4)
     return new_id
@@ -129,11 +134,15 @@ Your fine is Rs.{fine}/=
                 print("Book returned successfully ✅")
 
             borrowed_list.remove(book)
+            with open("borrowings.json", "w") as file:
+                json.dump(borrowed_list, file, indent=4)
 
             for book_detail in books_details:
 
                 if book_detail["BookID"] == book_id:
                     book_detail["Availability"] = True
+            with open("books.json", "w") as file:
+                json.dump(books_details, file, indent=4)
 
             return
 
@@ -175,7 +184,7 @@ def menu():
 
     print("""
 ======================================
-         UCSC Library System
+        Library Management System
 ======================================
             1.View All Books
             2.Borrow a Book
@@ -223,7 +232,7 @@ def remove_a_member(member_id):
                 json.dump(member_ids, file, indent=4)
             break
 
-    print("Member ID not found")
+    print("Member Successfully Removed")
 
 # ------------- Remove a Book ---------------
 
