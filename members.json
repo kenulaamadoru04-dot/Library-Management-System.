@@ -14,9 +14,7 @@
         "Age": 21,
         "Joined_Date": "2024-09-03",
         "Member_ID": "MID0002",
-        "Borrowed_Books": [
-            "BID0002"
-        ]
+        "Borrowed_Books": []
     },
     {
         "Name": "Peter",

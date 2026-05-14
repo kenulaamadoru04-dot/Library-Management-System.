@@ -74,7 +74,38 @@ Member ID: {new_member["Member_ID"]}
     with open("members.json", "w") as file:
         json.dump(member_ids, file, indent=4)
     return new_id
+# ------------------ Add  a Book ----------------
+# ------------------ Add a New Book ----------------
 
+def add_book():
+
+    last_book_id = books_details[-1]["BookID"]
+    id_number = int(last_book_id[-4:])
+
+    new_book_id = f"BID{(id_number + 1):04}"
+
+    new_book = {
+        "Name": input("Enter Book Name: "),
+        "BookID": new_book_id,
+        "Author": input("Enter Author Name: "),
+        "Availability": True,
+    }
+
+    books_details.append(new_book)
+
+    # Save to books.json
+    with open("books.json", "w") as file:
+        json.dump(books_details, file, indent=4)
+
+    print(f"""
+Book Added Successfully ✅
+--------------------------------
+Book ID: {new_book['BookID']}
+Name: {new_book['Name']}
+Author: {new_book['Author']}
+Availability: Available
+--------------------------------
+""")
 # ------------------ Borrowing a Book ----------------
 
 def borrowing_book(book_id, mem_id):
@@ -100,6 +131,13 @@ def borrowing_book(book_id, mem_id):
 
             print("Book Borrowed ✅")
             print(f"Your Due date is {due_date}")
+
+            for member in member_ids:
+                if member["Member_ID"] == mem_id:
+                    member["Borrowed_Books"].append(book_id)
+
+            with open("members.json", "w") as file1:
+                json.dump(member_ids, file1, indent=4)
 
             with open("borrowings.json", "w") as file1:
                 json.dump(borrowed_list, file1, indent=4)
@@ -151,6 +189,13 @@ Your fine is Rs.{fine}/=
             with open("books.json", "w") as file2:
                 json.dump(books_details, file2, indent=4)
 
+            for member in member_ids:
+                if book_id in member["Borrowed_Books"]:
+                    member["Borrowed_Books"].remove(book_id)
+
+            with open("members.json", "w") as file1:
+                json.dump(member_ids, file1, indent=4)
+
             return
 
     print("Borrow record not found")
@@ -196,11 +241,12 @@ def menu():
             1.View All Books
             2.Borrow a Book
             3.Return a Book
-            4.Add Member
-            5.Show All the members
-            6.Show All Borrowed Details
-            7.Remove a Member
-            8.Remove a Book
+            4.Add a Member
+            5.Add a Book
+            6.Show All the members
+            7.Show All Borrowed Details
+            8.Remove a Member
+            9.Remove a Book
             0.Exit
 ======================================
 """)
@@ -289,13 +335,15 @@ while library_process:
     elif user_option == "4":
         new_m_id = add_member()
     elif user_option == "5":
-        show_members(member_ids)
+        add_book()
     elif user_option == "6":
-        show_borrowings(borrowed_list)
+        show_members(member_ids)
     elif user_option == "7":
+        show_borrowings(borrowed_list)
+    elif user_option == "8":
         user_id = name_validation()
         remove_a_member(user_id)
-    elif user_option == "8":
+    elif user_option == "9":
         book_id = input("Enter Book ID: ")
         remove_a_book(book_id)
     elif user_option == "0":
@@ -303,11 +351,3 @@ while library_process:
     else:
         print("⚠️Invalid option")
         continue
-
-
-
-
-
-
-
-

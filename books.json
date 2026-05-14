@@ -23,7 +23,9 @@
         "Name": "The Alchemist",
         "BookID": "BID0004",
         "Author": "Paulo Coelho",
-        "Availability": true
+        "Availability": true,
+        "Last Borrowed Date": "2026-05-14",
+        "Last Borrowed Member": "MID0002"
     },
     {
         "Name": "Atomic Habits",
@@ -71,6 +73,12 @@
         "Name": "To Kill a Mockingbird",
         "BookID": "BID0012",
         "Author": "Harper Lee",
+        "Availability": true
+    },
+    {
+        "Name": "Madol Doova",
+        "BookID": "BID0013",
+        "Author": "Martin Wickramasinghe",
         "Availability": true
     }
 ]
