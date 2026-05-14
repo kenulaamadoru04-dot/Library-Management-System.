@@ -1,17 +1,11 @@
 [
     {
-        "BookID": "BID0002",
-        "MemberID": "MID002",
-        "BorrowedDate": "2026-05-01",
-        "DueDate": "2026-05-15"
-    },
-    {
         "BookID": "BID0001",
         "MemberID": "MID0001",
         "BorrowedDate": "2026-05-13",
         "DueDate": "2026-05-27"
     },
-        {
+    {
         "BookID": "BID0003",
         "MemberID": "MID0001",
         "BorrowedDate": "2026-05-13",

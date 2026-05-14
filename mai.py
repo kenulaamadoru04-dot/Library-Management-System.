@@ -85,12 +85,12 @@ def borrowing_book(book_id, mem_id):
             if not book["Availability"]:
                 print("Book is not available now")
                 break
-
+            due_date = (TODAY + timedelta(days=VALID_DAYS)).strftime("%Y-%m-%d")
             details = {
                 "BookID": book["BookID"],
                 "MemberID": mem_id,
                 "BorrowedDate": TODAY.strftime("%Y-%m-%d"),
-                "DueDate": (TODAY + timedelta(days=VALID_DAYS)).strftime("%Y-%m-%d"),
+                "DueDate": due_date,
             }
 
             borrowed_list.append(details)
@@ -99,6 +99,13 @@ def borrowing_book(book_id, mem_id):
             book["Last Borrowed Member"] = mem_id
 
             print("Book Borrowed ✅")
+            print(f"Your Due date is {due_date}")
+
+            with open("borrowings.json", "w") as file1:
+                json.dump(borrowed_list, file1, indent=4)
+
+            with open("books.json", "w") as file1:
+                json.dump(books_details, file1, indent=4)
             return True
 
     print("Book ID not found")
@@ -134,15 +141,15 @@ Your fine is Rs.{fine}/=
                 print("Book returned successfully ✅")
 
             borrowed_list.remove(book)
-            with open("borrowings.json", "w") as file:
-                json.dump(borrowed_list, file, indent=4)
+            with open("borrowings.json", "w") as file1:
+                json.dump(borrowed_list, file1, indent=4)
 
             for book_detail in books_details:
 
                 if book_detail["BookID"] == book_id:
                     book_detail["Availability"] = True
-            with open("books.json", "w") as file:
-                json.dump(books_details, file, indent=4)
+            with open("books.json", "w") as file2:
+                json.dump(books_details, file2, indent=4)
 
             return
 
@@ -228,8 +235,8 @@ def remove_a_member(member_id):
     for member in member_ids:
         if member["Member_ID"] == member_id:
             member_ids.remove(member)
-            with open("members.json", "w") as file:
-                json.dump(member_ids, file, indent=4)
+            with open("members.json", "w") as file1:
+                json.dump(member_ids, file1, indent=4)
             break
 
     print("Member Successfully Removed")
@@ -240,6 +247,8 @@ def remove_a_book(book_id):
     for book in books_details:
         if book["BookID"] == book_id:
             books_details.remove(book)
+            with open("books.json", "w") as file1:
+                json.dump(books_details, file1, indent=4)
             break
 
     print("Book ID not found")

@@ -3,19 +3,21 @@
         "Name": "Game of Thrones",
         "BookID": "BID0001",
         "Author": "R R Martin",
-        "Availability": true
+        "Availability": false
     },
     {
         "Name": "Harry Potter",
         "BookID": "BID0002",
         "Author": "J K Rowling",
-        "Availability": false
+        "Availability": true,
+        "Last Borrowed Date": "2026-05-14",
+        "Last Borrowed Member": "MID0002"
     },
     {
         "Name": "The Hobbit",
         "BookID": "BID0003",
         "Author": "J R R Tolkien",
-        "Availability": true
+        "Availability": false
     },
     {
         "Name": "The Alchemist",
